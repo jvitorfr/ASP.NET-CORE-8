@@ -1,0 +1,10 @@
+App.Service/obj
+App.Service/bin
+App.Domain/obj
+App.Domain/bin
+App.Broker/obj
+App.Broker/bin
+App.Repository/obj
+App.Repository/bin
+Portifolio_queue/obj
+Portifolio_queue/bin
