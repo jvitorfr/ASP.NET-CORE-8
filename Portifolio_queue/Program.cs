@@ -8,7 +8,24 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using System;
 
+
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      policy =>
+                      {
+                          policy.WithOrigins("https://localhost:5135")
+                          .AllowAnyMethod()
+                            .AllowAnyHeader()
+                            .AllowCredentials();
+                      });
+});
+
+;
 
 // Add services to the container.
 builder.Services.AddControllers();

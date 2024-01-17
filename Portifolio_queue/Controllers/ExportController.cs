@@ -24,8 +24,8 @@ namespace Portifolio_queue.Controllers
         private readonly IQueueRepository _repository = queueRepository;
         private readonly IFileRepository _fileRepository = fileRepository;
         private readonly IHubContext<ExportHub> _hub = hub;
-
-        [HttpPost]
+        // teste
+        [HttpPost] 
         public IActionResult Post([FromBody] Queue data)
         {
             var publisher = new Publisher();
