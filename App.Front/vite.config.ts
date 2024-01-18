@@ -13,7 +13,7 @@ const baseFolder =
         : `${process.env.HOME}/.aspnet/https`;
 
 const certificateArg = process.argv.map(arg => arg.match(/--name=(?<value>.+)/i)).filter(Boolean)[0];
-const certificateName = certificateArg ? certificateArg.groups.value : "App.Front";
+const certificateName = certificateArg ? certificateArg?.groups?.value : "App.Front";
 
 if (!certificateName) {
     console.error('Invalid certificate name. Run this script in the context of an npm/yarn script or pass --name=<<app>> explicitly.')
@@ -48,13 +48,13 @@ export default defineConfig({
     server: {
         proxy: {
             '/api': {
-                target: 'https://localhost:32772', // Your API server address
+                target: 'https://localhost:32768', // Your API server address
                 changeOrigin: true,
                 secure: false,
                 rewrite: (path) => path.replace(/^\/api/, ''),
             },
         },
-        port: 5135,
+        port: 5173,
         https: {
             key: fs.readFileSync(keyFilePath),
             cert: fs.readFileSync(certFilePath),

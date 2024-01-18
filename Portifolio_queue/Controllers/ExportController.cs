@@ -25,7 +25,7 @@ namespace Portifolio_queue.Controllers
         private readonly IFileRepository _fileRepository = fileRepository;
         private readonly IHubContext<ExportHub> _hub = hub;
         // teste
-        [HttpPost] 
+        [HttpPost]
         public IActionResult Post([FromBody] Queue data)
         {
             var publisher = new Publisher();
@@ -36,11 +36,11 @@ namespace Portifolio_queue.Controllers
         }
 
 
-        [HttpPost("Download")]
-        public async Task<IActionResult> DownloadFile(Guid id)
+        [HttpGet("Download")]
+        public async Task<IActionResult> DownloadFile(string id)
         {
             // TODO: update when finish the upload/download tests
-            var file = _fileRepository.Find(Guid.Parse("8a84ad17-7de0-4f61-983d-c1decc762a15"));
+            var file = _fileRepository.Find(Guid.Parse(id));
 
             if (file == null)
             {
@@ -48,6 +48,21 @@ namespace Portifolio_queue.Controllers
             }
             await Task.Run(() => _hub.Clients.All.SendAsync("ReceiveMessage", "Download", "Finalizado"));
             return File(file.Content, "application/pdf", file.Name);
+        }
+
+
+        [HttpGet("Files")]
+        public IActionResult AvalaibleFiles()
+        {
+            // TODO: update when finish the upload/download tests
+            var files = _fileRepository.FindAll();
+
+            if (files == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(new JsonResponse { Data = files, Message = "All Files" });
         }
 
 

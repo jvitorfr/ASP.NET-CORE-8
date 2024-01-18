@@ -44,7 +44,7 @@ namespace Portifolio_queue.Controllers
             }
 
 
-            return Ok("File uploaded successfully: " + fileEntity.Id);
+            return Ok(new JsonResponse { Data = fileEntity.Id, Message = "File uploaded successfully: "});
         }
     }
 

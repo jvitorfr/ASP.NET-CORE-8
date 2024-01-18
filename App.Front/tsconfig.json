@@ -7,5 +7,17 @@
     {
       "path": "./tsconfig.app.json"
     }
-  ]
+  ],
+    "compilerOptions": {
+      "target": "esnext",
+      "module": "esnext",
+      "moduleResolution": "node",
+      "jsx": "preserve",
+      "esModuleInterop": true,
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
+      // ... other options
+    }
+    // ... other configurations
+
 }
