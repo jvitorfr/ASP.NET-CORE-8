@@ -1,6 +1,8 @@
 <template>
     <div class="import-component">
-        <TableComponent :items="items" />
+        <TableComponent :headers="['File Name','Created At', 'Updated At']" :items="items" :actions="[
+        { btn: 'btn-success', icon: 'bi bi-cloud-download', perform: () => console.log('perfom') },
+        { btn: 'btn-primary', icon: 'bi bi-cloud-upload', perform: () => console.log('perfom') }]" />
         <input type="file" accept="" id="upload" ref="file" @change="handleFileChange" style="display:none;" />
         <button class="btn btn-primary" @click="click()">Upload</button>
         <button class="btn btn-default" @click="downloadFile()">Download</button>
@@ -121,30 +123,4 @@ export default defineComponent({
 </script>
 
 <style scoped>
-th {
-    font-weight: bold;
-}
-
-tr:nth-child(even) {
-    background: #F2F2F2;
-}
-
-tr:nth-child(odd) {
-    background: #FFF;
-}
-
-th,
-td {
-    padding-left: .5rem;
-    padding-right: .5rem;
-}
-
-.weather-component {
-    text-align: center;
-}
-
-table {
-    margin-left: auto;
-    margin-right: auto;
-}
 </style>

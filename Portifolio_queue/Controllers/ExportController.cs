@@ -62,7 +62,7 @@ namespace Portifolio_queue.Controllers
                 return NotFound();
             }
 
-            return Ok(new JsonResponse { Data = files, Message = "All Files" });
+            return Ok(new JsonResponse { Data = files.Select(x => new { x.Id, x.Name, x.CreatedAt, x.UpdatedAt}).ToList() , Message = "All Files" });
         }
 
 

@@ -4,16 +4,15 @@ import HelloWorld from './components/HelloWorld.vue'
 
 <template>
   <div class="container">
-    <div class="row">
-      <div class="col-md-4 col-md-offset-4 text-center">
-
-        <header>
+    <header>
           <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
         </header>
-
+    <div class="row">
+      <div class="">
         <main>
-          <HelloWorld />
+     
         </main>
+        <HelloWorld />
       </div>
     </div>
   </div>
